@@ -18,13 +18,19 @@ def chatbot(prompt):
 def main():
     print("Welcome to the Chatbot! Type 'exit' to quit.")
 
+    historical = []
+
     while True:
         user_input = input("\nYou: ")
         if user_input.strip().lower() == "exit":
             print("Goodbye!")
             break
 
-        response = chatbot(user_input)
+        historical.append(f"User: {user_input}")
+        prompt = "\n".join(historical)
+        response = chatbot(prompt)
+        historical.append(f"Bot: {response}")
+
         print(f"\nBot: {response}")
 
 
